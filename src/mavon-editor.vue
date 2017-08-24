@@ -1,5 +1,5 @@
 <template>
-    <div :class="[{'fullscreen': s_fullScreen},code_style]" class="v-note-wrapper markdown-body">
+    <div :class="[{'fullscreen': s_fullScreen}]" class="v-note-wrapper markdown-body">
         <!--工具栏-->
         <div class="v-note-op" v-show="toolbarsFlag">
             <s-md-toolbar-left ref="toolbar_left" :editable="editable" :d_words="d_words" @toolbar_left_click="toolbar_left_click" :toolbars="toolbars"
@@ -14,15 +14,6 @@
             <!--编辑区-->
             <div ref="vNoteEdit" @scroll="$v_edit_scroll" class="v-note-edit divarea-wrapper"
                  :class="{'scroll-style': s_scrollStyle  , 'single-edit': !s_preview_switch && !s_html_code , 'single-show': (!s_subfield && s_preview_switch) || (!s_subfield && s_html_code)}" @click="textAreaFocus">
-                <!-- 单栏模式 html展示 -->
-                <!-- <div v-show="!s_preview_switch&&s_html_code&&!s_screen_phone" class="content-div">
-                    {{d_render}}
-                </div> -->
-                <!-- 单栏模式 渲染区域-->
-                <!-- <div ref="vNoteDivEdit" @keydown.enter="$auto_textarea_div_enter" @keyup="$auto_textarea_div_change"
-                     spellcheck="false" v-show="!s_preview_switch&&!s_html_code&&!s_screen_phone"
-                     class="content-div content-div-edit" :contenteditable="editable">
-                </div> -->
                 <div  class="content-input-wrapper">
                     <!-- 双栏 -->
                     <v-autoTextarea ref="vNoteTextarea" :placeholder="placeholder ? placeholder : d_words.start_editor" class="content-input" fontSize="15px"
@@ -69,15 +60,6 @@
         <div :class="{'show': s_readmodel}" class="v-note-read-model scroll-style" ref="vReadModel">
             <div class="v-note-read-content" v-html="d_render">
             </div>
-            <!--标题导航-->
-            <!-- <div v-if="toolbars.navigation" v-show="s_navigation_full" class="v-note-navigation-wrapper">
-                 <div class="v-note-navigation-title">
-                     {{d_words.navigation_title}}<i @click="toolbar_right_click('navigationfull')"
-                                                    class="fa fa-mavon-times v-note-navigation-close" aria-hidden="true"></i>
-                 </div>
-                 <div ref="navigationContentFull" class="v-note-navigation-content scroll-style">
-                 </div>
-             </div>-->
         </div>
     </div>
 </template>
@@ -108,6 +90,7 @@
         else hljs(_res, fuc); */
     }
     export default {
+        markdown: markdown,
         props: {
             // 是否渲染滚动条样式(webkit)
             scrollStyle: {
@@ -154,10 +137,10 @@
                     return CONFIG.toolbars
                 }
             },
-            code_style:{
+            /* code_style:{
                 type:String,
                 default:'code-github'
-            },
+            }, */
             placeholder: {
                 type: String,
                 default: null
@@ -490,16 +473,15 @@
             's-md-toolbar-right': s_md_toolbar_right
         }
     };
-    import "./lib/font/css/fontello.css"
-    import './lib/css/md.css'
-    import 'katex/dist/katex.min.css'
+    import "./lib/css/markdown.css";
+    import "./lib/font/css/fontello.css";
 </script>
 <style lang="stylus" rel="stylesheet/stylus">
     @import "lib/css/scroll.styl"
     @import "lib/css/mavon-editor.styl"
 </style>
 <style lang="css" scoped>
-.auto-textarea-wrapper {
-    height: 100%;
-}
+    .auto-textarea-wrapper {
+        height: 100%;
+    }
 </style>

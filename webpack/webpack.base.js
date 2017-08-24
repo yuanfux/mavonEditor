@@ -37,7 +37,14 @@ module.exports = {
                 loader: 'file-loader',
                 options: { name: '[name].[ext]?[hash]' }
             },
-            { test: /\.(woff|ttf|eot|svg)/, loader: 'file-loader?name=font/[name].[ext]&publicPath=../' },
+            {
+                test: /\.(woff|woff2?|eot|ttf|otf|svg)(.*)?$/,
+                loader: 'file-loader',
+                options: {
+                    name: 'fonts/[name].[ext]',
+                    publicPath: '../'
+                }
+            },
             {
                 // css代码分割打包
                 test: /\.css$/,

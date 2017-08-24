@@ -18,8 +18,8 @@
             </h2>
             <button @click="uploadimg">upload</button>
             <button @click="imgreplace">imgreplace</button>
-            <mavon-editor  ref=md :subfield="subfield" :code_style="code_style" :toolbarsFlag="toolbarsFlag" :editable="editable"
-                          :language="d_language" @change="change" @save="saveone" :ishljs="true" class="item-editor" v-model="help1"
+            <mavon-editor  ref=md :subfield="subfield" :toolbarsFlag="toolbarsFlag" :editable="editable"
+                          :language="d_language" @change="change" @save="saveone" class="item-editor" v-model="help1"
                           @imgAdd="$imgAdd" @imgDel="$imgDel" @subfieldtoggle="$subfieldtoggle" @previewtoggle="$previewtoggle"></mavon-editor>
         </div>
         <!--自定义-->
@@ -47,7 +47,8 @@
     // import {CONFIG} from './assets/config.js'
     import {CONFIG} from '../lib/config.js'
     import axios from 'axios'
-    import mavonMarkdownIt from './init-markdown'
+    // 引入样式
+    import "highlight.js/styles/xcode.css"
     export default {
         name: 'app',
         data () {
@@ -71,7 +72,6 @@
                 editable: true,
                 toolbarsFlag: true,
                 img_file: {},
-                code_style: 'code-hybrid'
             }
         },
         created () {

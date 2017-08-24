@@ -16,10 +16,10 @@
 /*.markdown-body{
     @import "node_modules/highlight.js/styles/github.css"
 }*/
-.markdown-body strong{
+.markdown-body strong {
     font-weight: bolder;
 }
-.code-github{
+/* .code-github{
 @import "node_modules/highlight.js/styles/github.css"
 }
 .code-hybrid{
@@ -27,14 +27,16 @@
 }
 .code-xcode{
 @import "node_modules/highlight.js/styles/xcode.css"
-}
+} */
 
 .markdown-body .hljs-center {
     text-align: center;
 }
-.markdown-body .hljs-right {
-    text-align: right;
-}
 .markdown-body .hljs-left {
     text-align: left;
 }
+.markdown-body .hljs-right {
+    text-align: right;
+}
+
+
