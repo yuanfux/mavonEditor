@@ -18,7 +18,7 @@ var markdown_config = {
     xhtmlOut: true,        // Use '/' to close single tags (<br />).
     breaks: true,        // Convert '\n' in paragraphs into <br>
     langPrefix: 'language-markdown',  // CSS language prefix for fenced blocks. Can be
-    linkify: false,        // 自动识别url
+    linkify: true,        // 自动识别url
     typographer: true,
     quotes: '“”‘’',
 }
@@ -32,14 +32,13 @@ var sup = require('markdown-it-sup')
 var deflist = require('markdown-it-deflist')
 // <abbr/>
 var abbr = require('markdown-it-abbr')
-// footnote
-var footnote = require('markdown-it-footnote')
+
 // insert 带有下划线 样式 ++ ++
-var insert = require('markdown-it-ins')
+var insert = require('markdown-it-ins');
 // mark
-var mark = require('markdown-it-mark')
+var mark = require('markdown-it-mark');
 //
-var container = require('markdown-it-container')
+var container = require('markdown-it-container');
 var miip = require('markdown-it-images-preview');
 markdown.use(sup)
     .use(sub)
@@ -49,7 +48,6 @@ markdown.use(sup)
     .use(container, 'hljs-right')/*align right */
     .use(deflist)
     .use(abbr)
-    .use(footnote)
     .use(insert)
     .use(mark)
     .use(miip)

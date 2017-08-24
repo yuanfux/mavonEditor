@@ -326,8 +326,8 @@
             toolbar_right_click(_type) {
                 toolbar_right_click(_type, this);
             },
-            getNavigation($vm, full) {
-                return getNavigation($vm, full);
+            getNavigation($vm) {
+                return getNavigation($vm);
             },
             // @event
             // 修改数据触发 （val ， val_render）
@@ -372,7 +372,7 @@
                     this.readmodel(this.s_readmodel, this.d_value)
                 }
                 if (this.s_readmodel && this.toolbars.navigation) {
-                    this.getNavigation(this, true)
+                    this.getNavigation(this)
                 }
             },
             // ---------------------------------------
@@ -426,7 +426,7 @@
                     // change回调
                     if ($vm.change) $vm.change($vm.d_value, $vm.d_render);
                     // 改变标题导航
-                    if ($vm.s_navigation) getNavigation($vm, false);
+                    if ($vm.s_navigation) getNavigation($vm);
                     // v-model 语法糖
                     $vm.$emit('input', val)
                     // 塞入编辑记录数组

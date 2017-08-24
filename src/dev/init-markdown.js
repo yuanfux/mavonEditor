@@ -1,7 +1,8 @@
 var hljs = require('highlight.js')
 var katex = require('markdown-it-katex');
 var emoji = require('markdown-it-emoji');
-
+// footnote
+var footnote = require('markdown-it-footnote')
 export const initMarkdown = (mavonEditor) => {
     mavonEditor.markdown.set({
         highlight: function (str, lang) {
@@ -17,6 +18,6 @@ export const initMarkdown = (mavonEditor) => {
             return '<pre class="hljs"><code>' + mavonEditor.markdown.utils.escapeHtml(str) + '</code></pre>';
         }
     });
-    mavonEditor.markdown.use(katex).use(emoji);
+    mavonEditor.markdown.use(katex).use(emoji).use(footnote);
 }
 

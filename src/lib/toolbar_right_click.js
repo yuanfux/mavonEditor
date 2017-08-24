@@ -75,7 +75,7 @@ function $toolbar_right_navigation_click($vm) {
     }
     if ($vm.s_navigation) {
         // 绘制标题导航
-        $vm.getNavigation($vm, false)
+        $vm.getNavigation($vm)
     }
 }
 

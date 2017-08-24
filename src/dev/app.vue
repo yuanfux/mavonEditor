@@ -48,7 +48,8 @@
     import {CONFIG} from '../lib/config.js'
     import axios from 'axios'
     // 引入样式
-    import "highlight.js/styles/xcode.css"
+    import "highlight.js/styles/xcode.css";
+    import "katex/dist/katex.min.css"
     export default {
         name: 'app',
         data () {

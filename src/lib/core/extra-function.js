@@ -53,28 +53,45 @@ export const insertTextAtCaret = (obj, {prefix, subfix, str}, $vm) => {
 /**
  * 生成导航目录
  */
-export const getNavigation = ($vm , full) => {
+export const getNavigation = ($vm) => {
     let navigationContent;
 
-    navigationContent = $vm.$refs.navigationContent
+    navigationContent = $vm.$refs.navigationContent;
 
-    navigationContent.innerHTML = $vm.d_render
-    let nodes = navigationContent.children
+    navigationContent.innerHTML = $vm.d_render;
+    let nodes = navigationContent.children;
     if (nodes.length) {
         for (let i = 0; i < nodes.length; i++) {
-            judageH(nodes[i] , i , nodes)
+            judageH(nodes[i] , i , nodes);
         }
     }
     function judageH(node , i , nodes) {
         let reg = /^H[1-6]{1}$/;
         if (!reg.exec(node.tagName)) {
-            node.style.display = 'none'
+            node.style.display = 'none';
         } else {
-            let hx = parseInt(node.tagName.substring(1,2));
+           /* let title = node.innerText;
+            let hx = parseInt(node.tagName.substring(1,2)); */
             node.onclick = function () {
                 let vShowContent = $vm.$refs.vShowContent;
                 let vNoteEdit = $vm.$refs.vNoteEdit;
-                vNoteEdit.scrollTop = vShowContent.children[i].offsetTop * (vNoteEdit.scrollHeight - vNoteEdit.offsetHeight) / (vShowContent.scrollHeight - vShowContent.offsetHeight)
+                if ($vm.s_subfield) {
+                    // 双栏
+                    if ($vm.s_preview_switch) {
+                        // 编辑预览
+                        vNoteEdit.scrollTop = vShowContent.children[i].offsetTop * (vNoteEdit.scrollHeight - vNoteEdit.offsetHeight) / (vShowContent.scrollHeight - vShowContent.offsetHeight);
+                    } else {
+                        // todo 编辑
+                    }
+                } else {
+                    // 单栏
+                    if ($vm.s_preview_switch) {
+                        // 预览
+                        vShowContent.scrollTop = vShowContent.children[i].offsetTop;
+                    } else {
+                        // todo 编辑
+                    }
+                }
             }
         }
     }
