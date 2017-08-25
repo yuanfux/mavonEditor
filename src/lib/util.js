@@ -20,6 +20,17 @@ export function p_ObjectCopy_DEEP(target, arg) {
   }
   return target;
 };
+
+export function p_ObjectCopy(target, arg) {
+    for (let arg_item in arg) {
+        let type = typeof arg[arg_item];
+        if (!target[arg_item] || (type !== 'Object' && type !== 'object')) {
+            target[arg_item] = arg[arg_item];
+            continue;
+        }
+    }
+    return target;
+};
 /**
  * 解析url参数
  */
